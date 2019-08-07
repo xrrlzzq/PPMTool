@@ -1,6 +1,7 @@
 package io.rongxie.ppmtool.services;
 
 import io.rongxie.ppmtool.domain.Project;
+import io.rongxie.ppmtool.exceptions.ProjectIdException;
 import io.rongxie.ppmtool.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,13 @@ public class ProjectService {
 
     public Project saveOrUpdateProject(Project project){
         //logic
+        try{
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        }catch (Exception e){
+            throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already existed");
+        }
 
-        return projectRepository.save(project);
+
     }
 }
