@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping("/api/project")
 public class ProjectController {
     @Autowired
@@ -40,5 +40,10 @@ public class ProjectController {
         Project project=projectService.findProjectByProjectIdentifier(projectId);
 
         return new ResponseEntity<Project>(project,HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public Iterable<Project> getAllProjects(){
+        return projectService.findAllProjects();
     }
 }
