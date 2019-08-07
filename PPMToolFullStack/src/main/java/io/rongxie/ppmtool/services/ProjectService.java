@@ -25,12 +25,20 @@ public class ProjectService {
     public Project findProjectByProjectIdentifier(String projectId){
         Project project=projectRepository.findByProjectIdentifier(projectId.toUpperCase());
         if(project==null){
-            throw new ProjectIdException("Project Not Found");
+            throw new ProjectIdException("Project with ID'"+ projectId+ "' Not Found");
         }
         return project;
     }
 
     public Iterable<Project> findAllProjects(){
         return projectRepository.findAll();
+    }
+
+    public void deletProjectByIdentifier(String projectId){
+        Project project=projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+        if(project==null){
+            throw new ProjectIdException("Can not delete project with ID'"+projectId.toUpperCase()+"'. This project does not exist");
+        }
+        projectRepository.delete(project);
     }
 }
