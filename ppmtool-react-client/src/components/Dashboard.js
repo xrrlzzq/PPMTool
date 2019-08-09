@@ -3,6 +3,7 @@ import ProjectItem from "./Project/ProjectItem";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Layout/Header";
+import CreateProjectButton from "./Project/CreateProjectButton";
 class Dashboard extends Component {
   render() {
     return (
@@ -13,9 +14,7 @@ class Dashboard extends Component {
               <div className="col-md-12">
                 <h1 className="display-4 text-center">Projects</h1>
                 <br />
-                <a href="ProjectForm.html" className="btn btn-lg btn-info">
-                  Create a Project
-                </a>
+                <CreateProjectButton />
                 <br />
                 <hr />
                 <ProjectItem />
