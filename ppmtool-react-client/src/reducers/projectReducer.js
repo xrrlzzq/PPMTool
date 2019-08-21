@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
     case GET_PROJECT:
       return {
         ...state,
-        proejct: action.payload
+        project: action.payload
       };
 
     default:

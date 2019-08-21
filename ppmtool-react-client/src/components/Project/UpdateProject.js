@@ -39,6 +39,7 @@ class UpdateProject extends Component {
   }
   componentDidMount() {
     const { id } = this.props.match.params;
+
     this.props.getProject(id, this.props.history);
   }
   onChange(e) {
